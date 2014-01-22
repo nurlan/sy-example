@@ -11,8 +11,8 @@
       <sca:interface.wsdl interface="ExampleService.wsdl#wsdl.porttype(ExampleServicePortType)"/>
       <soap:binding.soap name="soap1">
         <soap:contextMapper soapHeadersType="CONFIG"/>
-        <soap:wsdl>META-INF/ExampleService.wsdl</soap:wsdl>
-        <soap:wsdlPort>ExampleServiceSOAP</soap:wsdlPort>
+        <soap:wsdl>ExampleService.wsdl</soap:wsdl>
+        <soap:wsdlPort>ExampleServicePort</soap:wsdlPort>
         <soap:socketAddr>:8080</soap:socketAddr>
         <soap:contextPath>sy-example</soap:contextPath>
       </soap:binding.soap>
