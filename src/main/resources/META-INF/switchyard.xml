@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sy:switchyard xmlns:bean="urn:switchyard-component-bean:config:1.1" xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" xmlns:soap="urn:switchyard-component-soap:config:1.1" xmlns:sy="urn:switchyard-config:switchyard:1.1" name="sy-example" targetNamespace="urn:com.example.switchyard:sy-example:1.0">
+  <sca:composite name="sy-example" targetNamespace="urn:com.example.switchyard:sy-example:1.0">
+    <sca:component name="ExampleServiceBean">
+      <bean:implementation.bean class="com.example.switchyard.sy_example.ExampleServiceBean"/>
+      <sca:service name="ExampleService">
+        <sca:interface.java interface="com.example.switchyard.sy_example.ExampleService"/>
+      </sca:service>
+    </sca:component>
+    <sca:service name="ExampleServicePortType" promote="ExampleServiceBean/ExampleService">
+      <sca:interface.wsdl interface="ExampleService.wsdl#wsdl.porttype(ExampleServicePortType)"/>
+      <soap:binding.soap name="soap1">
+        <soap:contextMapper soapHeadersType="CONFIG"/>
+        <soap:wsdl>META-INF/ExampleService.wsdl</soap:wsdl>
+        <soap:wsdlPort>ExampleServiceSOAP</soap:wsdlPort>
+        <soap:socketAddr>:8080</soap:socketAddr>
+        <soap:contextPath>sy-example</soap:contextPath>
+      </soap:binding.soap>
+    </sca:service>
+  </sca:composite>
+</sy:switchyard>
